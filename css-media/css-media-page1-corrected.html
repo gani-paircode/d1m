@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query Example</title>
+    <style>
+        * {
+            margin: 0px;
+            height: 0px;
+            box-sizing: border-box;
+        }
+        .header {
+            background-color: aquamarine;
+            padding: 1rem;
+            height: 200px;
+        }
+        .footer {
+            color: lightgoldenrodyellow;
+            background-color: black;
+            height: 300px;
+            padding: 1rem;
+        }
+        .content {
+            height: 100vh;
+            display: flex;
+            position: relative
+        }
+        .mainContent {
+            width: 70%;
+            background-color: lightgrey;
+            padding: 1rem;
+            height: 100%;
+        }
+        .d1m___DesktopAd {
+            width: 15%;
+            background-color: lightgoldenrodyellow;
+            padding: 1rem;
+            height: 100%;
+        }
+        .d1m___MobileAd {
+            display: none;
+            height: 80px;
+            padding: 1rem;
+            background-color: lightblue;
+        }
+        @media screen and (max-width: 767px) {
+            /* all the devices with screen that has width <= 767px*/
+            .d1m___MobileAd {
+                display: block;
+            }
+            .d1m___DesktopAd {
+                display: none;
+            }
+            .mainContent {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        I am header 
+    </div>
+    <div class="content">
+        <div class="d1m___DesktopAd">
+            I will contain desktop Ads
+        </div>
+
+        <div class="mainContent">
+            I will contain main content of the page
+        </div>
+        <div class="d1m___DesktopAd">
+            I will contain desktop Ads
+        </div>
+    </div>
+    <div class="d1m___MobileAd">
+        I will contain mobile Ads
+    </div>
+    <div class="footer">
+        I am footer
+    </div>
+</body>
+</html>

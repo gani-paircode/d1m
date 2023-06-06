@@ -68,19 +68,28 @@
             border-bottom: 1px solid var(--newsTitleBorder);
             color: var(--textColor);
         }
-
+    
         article.newsBox div.newsShortDescription {
             padding-top: 1rem;
         }
         @media (orientation: portrait) {
             main {
-                background-color: #ffe9e9;
+                background-color: skyblue;
             } 
         }
         @media (orientation: landscape) {
             main {
-                background-color: #ccddde;
+                background-color: lightpink;
             }
+        }
+        @media print {
+            header, footer {
+                display: none;
+            }
+            article.newsBox h3.newsTitle {
+                color: black;
+            }
+            
         }
     </style>
 </head>
@@ -91,7 +100,7 @@
     </header>
     <main>
         <article class="newsBox">
-            <h3 class="newsTitle">
+            <h3 id="newsTitle1" class="newsTitle">
                 Pele, Brazil's sublimely skilled soccer star who charmed the world, dead at 82
             </h3>
             <div class="newsShortDescription">

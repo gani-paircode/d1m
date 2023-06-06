@@ -1,60 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Query Example</title>
     <style>
+        :root {
+            --headerBackground: lightblue;
+            --mainBackground: lightcyan;
+            --footerBackground: darkseagreen;
+            --newsBoxBroder: darkseagreen;
+            --newsTitleBorder: lemonchiffon;
+            --textColor: red;
+        }
+
         * {
             margin: 0px;
-            height: 0px;
+            padding: 0px;
             box-sizing: border-box;
         }
+
         .header {
             background-color: aquamarine;
             padding: 1rem;
             height: 200px;
         }
+
         .footer {
             color: lightgoldenrodyellow;
             background-color: black;
             height: 300px;
             padding: 1rem;
         }
+
         .content {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
-            position: relative
+            position: relative;
+            background-color: lightgoldenrodyellow;
         }
+
         .mainContent {
             width: 70%;
             background-color: lightgrey;
             padding: 1rem;
             height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
+
         .d1m___DesktopAd {
             width: 15%;
-            background-color: lightgoldenrodyellow;
             padding: 1rem;
-            height: 100%;
+            height: 750px
         }
+
         .d1m___MobileAd {
             display: none;
             height: 80px;
             padding: 1rem;
             background-color: lightblue;
         }
+
+        article.newsBox {
+            padding: 1rem;
+            border: 1px solid var(--newsBoxBroder);
+            width: 250px;
+            min-height: 350px;
+            margin-bottom: 1rem;
+        }
+
+        main article.newsBox:first-of-type {
+            margin-top: 0px;
+        }
+
+        main article.newsBox:last-of-type {
+            margin-bottom: 0px;
+        }
+
+        article.newsBox h3.newsTitle {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--newsTitleBorder);
+            color: var(--textColor);
+        }
+
+        article.newsBox div.newsShortDescription {
+            padding-top: 1rem;
+        }
+
         @media screen and (max-width: 767px) {
+
             /* all the devices with screen that has width <= 767px*/
             .d1m___MobileAd {
                 display: block;
             }
+
             .d1m___DesktopAd {
                 display: none;
             }
+
             .mainContent {
                 width: 100%;
+            }
+            article.newsBox {
+                width: 100%;
+            }
+
+            .mainContent {
+                background-color: lightgrey;
+                padding: 1rem;
+                flex-wrap: nowrap;
+                justify-content: space-around;
+                flex-direction: column;
             }
         }
     </style>
@@ -62,15 +122,136 @@
 
 <body>
     <div class="header">
-        I am header 
+        I am header
     </div>
     <div class="content">
         <div class="d1m___DesktopAd">
             I will contain desktop Ads
         </div>
-
         <div class="mainContent">
-            I will contain main content of the page
+            <article class="newsBox">
+                <h3 class="newsTitle">
+                    Pele, Brazil's sublimely skilled soccer star who charmed the world, dead at 82
+                </h3>
+                <div class="newsShortDescription">
+                    Pele, the magical Brazilian soccer star who rose from barefoot poverty to become one of the greatest
+                    and
+                    best-known athletes in modern history, died at the age of 82, his daughter said on Instagram on
+                    Thursday.
+                </div>
+            </article>
+            <article class="newsBox">
+                <h3 class="newsTitle">
+                    Covid surge in China can create havoc across the globe: Report
+                </h3>
+                <div class="newsShortDescription">
+                    Beijing [China]: While the world is still recovering from the losses of livelihoods, damages to
+                    businesses and national economies, and healthcare disruptions, the new, deadly variant of
+                    coronavirus
+                    from China can create havoc across the globe if its spread
+                    is not checked in time, reported The HK Post.
+                    <br /> What is going on in China at present has stoked fears about the repetition of the horrific
+                    Covid-19 outbreak that killed millions of people across the globe.
+                </div>
+            </article>
+            <article class="newsBox">
+                <h3 class="newsTitle">
+                    IPL 2023 Final Preview: Shubman Gill Gets Ready To Spoil MS Dhoni's Farewell Party
+                </h3>
+                <div class="newsShortDescription">
+                    Mahendra Singh Dhoni wouldn't mind a 'Farewell to Remember' but a young Shubman Gill, oozing grace,
+                    would do everything under his control to prevent Chennai Super Kings from beating Gujarat Titans to
+                    its fifth IPL title, on Sunday.
+                    <br />
+                    On Sunday, at the 132,000 seater Narendra Modi Stadium, the soon-to-be 42 Dhoni will have one last
+                    assignment in his favourite Canary Yellow jersey -- to stop Indian cricket's megastar-in-waiting and
+                    do a 'High Five'.
+                </div>
+            </article>
+            <article class="newsBox">
+                <h3 class="newsTitle">
+                    IPL 2023: MI Will Look For Replacements If Bowlers Are Not Fit, Concedes Head Coach Mark Boucher
+                </h3>
+                <div class="newsShortDescription">
+                    Head coach Mark Boucher says Mumbai Indians will look for replacement of front-line bowlers if they
+                    are not fit within time, as the five-time winners managed to reach playoffs despite missing first
+                    team bowlers Jasprit Bumrah, Jofra Archer and Jhye Richardson this season
+                    <br />
+                    In a season wherein Mumbai Indians became the first team to concede four totals above 200 on the
+                    trot, the batting unit carried them until the Eliminator clash, wherein they suffered a big loss at
+                    the hands of Gujarat Titans here.
+                </div>
+            </article>
+            <article class="newsBox">
+                <h3 class="newsTitle">
+                    This Innings Will Be Remembered For Years: Former Players Hail Shubman Gill's Century Vs MI
+                </h3>
+                <div class="newsShortDescription">
+                    Shubman Gill's electrifying hundred against Mumbai Indians in IPL Qualifier 2 was hailed by former
+                    cricketers with the legendary Sunil Gavaskar calling it an innings which will be remembered for the
+                    youngster's ability to play textbook cricketing shots in a T20 format.
+                    <br />
+                    The 23-year-old from Punjab on Friday extended his purple patch with a 60-ball 129-run knock as GT
+                    beat MI by 62 runs to enter their second straight IPL final.
+                </div>
+            </article>
+
+            <article class="newsBox">
+                <h3 class="newsTitle">
+                    Will ONDC disrupt Swiggy and Zomato’s business and the online food delivery landscape?
+                </h3>
+                <div class="newsShortDescription">
+                    Government-backed Open Network for Digital Commerce (ONDC) is expected to shake up food delivery in
+                    India. The number of transactions on the network have already reached over 10,000 orders per day. Is
+                    it game over for Swiggy and Zomato?
+                    <br />
+                    When hunger strikes at 2 am, who do you reach out to for ordering food online? Swiggy or Zomato have
+                    become buzzwords for hunger and late-night cravings. But now there's another option — ONDC.
+
+                </div>
+
+            </article>
+
+
+            <article class="newsBox">
+                <h3 class="newsTitle">
+                    This Quant Mutual Fund Gave Nearly 65% Return In Last 3 Years
+                </h3>
+                <div class="newsShortDescription">
+                    Mutual fund investments have become quite popular and convenient ways of building corpus funds over
+                    a period of time. There are many mutual funds which have been giving a good return to investors.
+                    Through systematic investment plan (SIP) you can even accumulate a huge amount with small
+                    investments every month. A Quant Mutual Fund is offering a comparatively higher return to investors
+                    as against the traditional investments.
+                    <br />
+                    A monthly investment of Rs 10,000 for three years in Quant Small Cap Fund Direct Plan can grow upto
+                    Rs 10 lakh.
+                    <br />
+                    The Quant Small Cap Plan has allocated 15.3 per cent of its capital to banks, followed by petroleum
+                    products (6.52 per cent), pharmaceuticals (5.86 per cent) and construction (5.78 per cent).
+                </div>
+
+            </article>
+
+
+            <article class="newsBox">
+                <h3 class="newsTitle">
+                    R Madhavan says son Vedaant is God’s ‘best blessing’: ‘The glory he brings to India means more than
+                    what I’ve ever done in my career’
+                </h3>
+                <div class="newsShortDescription">
+                    Actor R Madhavan may be turning 53 today, but the actor believes that he still has the hunger of a
+                    beginner. Having worked for over 30 years in cinema, he shared how he wants to do much more than
+                    just sit on his laurels. In a recent interview, the actor also opened up about how his son’s
+                    achievement means much more to him than whatever he’s done in his career.
+                    <br />
+                    To support his son’s aspirations, Madhavan and his wife moved to Dubai in 2021, to help his son
+                    train in better facilities. In an earlier interview, the actor shared that the family was in Dubai
+                    so that his son can have access to large pools.
+                </div>
+
+            </article>
+
         </div>
         <div class="d1m___DesktopAd">
             I will contain desktop Ads
@@ -83,4 +264,5 @@
         I am footer
     </div>
 </body>
+
 </html>

@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <title>Flexbox</title>
     <style>
         * {
             padding: 0px;
             margin: 0px;
             box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
         }
 
         body {
@@ -33,6 +37,11 @@
             height: 70px;
         }
 
+        .hundred {
+            height: 100px;
+            width: 100px;
+        }
+
         .item2 {
             border: 2px solid green;
             padding: 1rem;
@@ -48,9 +57,17 @@
         }
 
         .codeSpan {
-            padding: 2px;
+            padding: 2px 6px;
             background-color: #d8d5d5;
             font-weight: bold;
+            border-radius: 10px;
+        }
+
+        h1 .codeSpan {
+            font-size: 0.75em;
+            position: relative;
+            bottom: 2px;
+            padding: 6px 12px;
         }
 
         .devNotes {
@@ -58,16 +75,24 @@
             padding: 24px;
             background: aliceblue;
         }
+
+        li {
+            line-height: 1.8rem;
+        }
+
+        .groupHeading {
+            background: lightcoral;
+            padding: 1rem;
+        }
     </style>
 </head>
 
 <body>
 
-    <h2>Notes</h2>
-    <ol>
+    <h1>Flexbox - Webseries</h1>
+    <ol style="padding: 1rem;">
         <li>Flex container is in red border</li>
-        <li>Each flex item is in red border</li>
-        <li>Width of each flex item is vary (depends on it's content)</li>
+        <li>Each flex item is in green border</li>
         <li>Style of the container is given before it starts</li>
     </ol>
     <br />
@@ -78,117 +103,244 @@
 
     <script>
         (function () {
-            const stylesArray = [
-                {
-                    display: 'flex',
-                    'flex-direction': 'row'
-                },
-                {
-                    display: 'flex',
-                    'flex-direction': 'row-reverse',
-                },
-                {
-                    display: 'flex',
-                    'flex-wrap': 'no-wrap',
-                },
-                {
-                    display: 'flex',
-                    'flex-wrap': 'wrap',
-                },
-                {
-                    display: 'flex',
-                    'flex-direction': 'column',
-                },
-                {
-                    display: 'flex',
-                    'flex-direction': 'column-reverse',
-                },
-                {
-                    display: 'flex',
-                    'flex-wrap': 'wrap',
-                    height: '550px',
-                },
-                {
-                    display: 'flex',
-                    'flex-wrap': 'wrap',
-                    height: '550px',
-                    'align-content': 'flex-start',
-                },
-            ];
-
-            const flexItemsHTML = `<div class="item">
-            <span>1</span>
-        </div>
-        <div class="item">
-            <span>2</span>
-        </div>
-        <div class="item">
-            <span>3</span>
-        </div>
-        <div class="item">
-            <span>4</span>
-        </div>
-        <div class="item"><span>5</span></div>
-        <div class="item"><span>6</span></div>
-        <div class="item"><span>7</span></div>
-        <div class="item"><span>8</span></div>
-        <div class="item"><span>9</span></div>
-        <div class="item"><span>10</span></div>
-        `;
-
-            const getFlexContainer = (styleObj) => {
-                let styleStr = '';
-                let styleStrCode = '';
-                for (const key in styleObj) {
-                    styleStr = `${styleStr}${key}: ${styleObj[key]};`;
-                    styleStrCode = styleStrCode + `<p>${key}: ${styleObj[key]}</p>`
-                }
-                const html = `
-                <div class="code">${styleStrCode}</div>
-                <div class="container" style="${styleStr}"> ${flexItemsHTML} </div>
-                <br /><br /> <hr /> <br /> <br />
-            `;
-                return html;
-            }
-
-            stylesArray.forEach((styleObj) => {
-                const html = getFlexContainer(styleObj);
-                helloFlex.innerHTML += html;
-            });
 
             const infoArray = [
                 {
+                    groupHeading: `Ep 1: Direction <span class="codeSpan">flex-direction</span>`,
+                },
+                {
                     notes: [
-                        `Assume child elements doesn't have heigt and width defined`,
-                        `elements will take full height of the parent if <span class="codeSpan">flex-wrap</span> doesn't exists on parent element`
+                        `Default behaviour with limited items`,
+                        `By default <span class="codeSpan">flex-direction</span> is <span class="codeSpan">row</span>`
                     ],
                     containerStyle: {
                         display: 'flex',
-                        height: '300px'
                     },
                     totalChilds: 3,
                     childItemClass: 'item2',
                     itemsHtml: {}
+                },
 
+                {
+                    notes: [
+                        `<span class="codeSpan">flex-direction: row-reverse</span>`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-direction': 'row-reverse',
+                    },
+                    totalChilds: 3,
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
+
+
+                {
+                    notes: [
+                        `<span class="codeSpan">flex-direction: column</span>`,
+                        `Children without width - they will take full width of the parent`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-direction': 'column',
+                    },
+                    totalChilds: 3,
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
+
+                {
+                    notes: [
+                        `<span class="codeSpan">flex-direction: column</span>`,
+                        `Children with defined width`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-direction': 'column',
+                    },
+                    totalChilds: 3,
+                    childItemClass: 'item2 hundred',
+                    itemsHtml: {}
+                },
+
+
+                {
+                    notes: [
+                        `<span class="codeSpan">flex-direction: column-reverse</span>`,
+                        `Children with defined width`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-direction': 'column-reverse',
+                    },
+                    totalChilds: 3,
+                    childItemClass: 'item2 hundred',
+                    itemsHtml: {}
+                },
+
+
+                {
+                    groupHeading: `Ep 2 : Too many children <span class="codeSpan">flex-wrap</span>`,
+                },
+
+                {
+                    notes: [
+                        `Items will go beyond width of container, This looks ugly.`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-direction': 'row',
+                    },
+                    totalChilds: 12,
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
+
+                {
+                    notes: [
+                        `Use <span class="codeSpan">flex-wrap: wrap</span>`,
+                        `The above property doesn't make sense when you have only few items to render and that can be rendered in 1 line only`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                    },
+                    totalChilds: 12,
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
+
+                {
+                    groupHeading: `Ep 3 : Ugly cross axis <span class="codeSpan">align-content</span>`
+                },
+
+                {
+                    notes: [
+                        `I have <span class="codeSpan">flex-wrap: wrap</span> on container`,
+                        `Children are with particular height and width`,
+                        `Parent has big height`,
+                        `Seeing lot's of gap on vertical line (cross axis)?.`,
+                        `Feeling stressed ?? Well the solution of this will be <span class="codeSpan">align-content</span>`,
+                        `Before seeing the solution, see how this <b> RAAITA </b> looks like 🥲`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        height: '400px'
+                    },
+                    totalChilds: 8,
+                    childItemClass: 'item2 hundred',
+                    itemsHtml: {}
+                },
+
+                {
+                    notes: [
+                        `Have <span class="codeSpan">align-content: start</span>`,
+                        `This will group the children and put them within the container based on value of <span class="codeSpan">align-content: start</span>`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        height: '480px',
+                        'align-content': 'start'
+                    },
+                    totalChilds: 8,
+                    childItemClass: 'item2 hundred',
+                    itemsHtml: {}
+                },
+
+                {
+                    notes: [
+                        `Have <span class="codeSpan">align-content: center</span>`,
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        height: '480px',
+                        'align-content': 'center'
+                    },
+                    totalChilds: 8,
+                    childItemClass: 'item2 hundred',
+                    itemsHtml: {}
+                },
+
+
+                {
+                    notes: [
+                        `Have <span class="codeSpan">align-content: end</span>`,
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        height: '480px',
+                        'align-content': 'end'
+                    },
+                    totalChilds: 8,
+                    childItemClass: 'item2 hundred',
+                    itemsHtml: {}
+                },
+
+
+                {
+                    groupHeading: `Ep 4 : Rude children <span class="codeSpan">align-content</span>`
+                },
+
+                {
+                    notes: [
+                        `There are lot's of children without height and width.`,
+                        `Ideally height should be based on their content, but here they are taking height of the parent`,
+                        `No matter whether they need it or not`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        height: '350px',
+                        'flex-wrap': 'wrap',
+                    },
+                    totalChilds: 4,
+                    childItemClass: 'item2',
+                    itemsHtml: {}
                 },
                 {
                     notes: [
-                        `Assume child elements doesn't have heigt and width defined`,
-                        `<span class="codeSpan">flex-wrap: wrap</span>  &  <span class="codeSpan">align-content: start</span> exists on parent level`,
-                        `Here children will take height and width as per content.`,
+                        `Same as above`,
+                        `Here children are dividing height among them`,
+                        `See un-necessary height in each children element`,
+                        `Solution will be in next example`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        height: '650px',
+                        'flex-wrap': 'wrap',
+                    },
+                    totalChilds: 16,
+                    childItemClass: 'item2',
+                    itemsHtml: {
+                        7: `<span>7.....</span>`,
+                        8: `<span>8</span><br /><span>8.1</span></span><br /> <span>8.2</span>`,
+                        15: `<span>15</span><br /><span>15.1</span><br /><span>15.2</span> <br />
+                        <span>15.3</span><br /><span>15.4</span></span><br /><span>15.5</span> <br />
+                        <span>15.6</span><br /><span>15.7</span></span><br /><span>15.8</span>
+                        `,
+                    }
+                },
+
+                {
+                    notes: [
+                        `Use <span class="codeSpan">align-content: start</span> on parent`,
                         `Height of all elements in particular line will be same`,
-                        `If one element has more content in one line, rest element's height will be same as that element`
+                        `Height of all the elements in particular line will be the same as height of the tallest element in that line`
                     ],
                     containerStyle: {
                         display: 'flex',
                         'flex-wrap': 'wrap',
                         'align-content': 'start',
+                        height: '650px',
                     },
-                    totalChilds: 15,
+                    totalChilds: 18,
                     childItemClass: 'item2',
                     itemsHtml: {
                         7: `<span>7................</span>`,
-                        8: `<span>8</span><br /><span>8.1</span></span><br /><span>`,
+                        8: `<span>8</span><br /><span>8.1</span>`,
                         15: `<span>15</span><br /><span>15.1</span><br /><span>15.2</span> <br />
                         <span>15.3</span><br /><span>15.4</span></span><br /><span>15.5</span> <br />
                         <span>15.6</span><br /><span>15.7</span></span><br /><span>15.8</span>
@@ -198,21 +350,24 @@
                 }
             ];
 
-            infoArray.forEach(({ notes, containerStyle, totalChilds, childItemClass, itemsHtml }) => {
+            infoArray.forEach(({ groupHeading, notes, containerStyle, totalChilds, childItemClass, itemsHtml }) => {
+                if (groupHeading) {
+                    helloFlex.innerHTML += `<h1 class="groupHeading">${groupHeading}</h1> <br /><br />`;
+                    return;
+                }
                 let styleStr = '';
                 let styleStrCode = '';
                 for (const key in containerStyle) {
                     styleStr = `${styleStr}${key}: ${containerStyle[key]};`;
-                    styleStrCode = styleStrCode + `<p>${key}: ${containerStyle[key]}</p>`
+                    styleStrCode = styleStrCode + `<p>${key}: ${containerStyle[key]};</p>`
                 }
 
                 let flexItemsHTML = '';
                 for (let i = 1; i <= totalChilds; i++) {
-                    let html = itemsHtml[i] || `<span>${i}<span>`;
+                    let html = itemsHtml[i] || `<span>${i}</span>`;
                     flexItemsHTML = `${flexItemsHTML}<div class="${childItemClass}">${html}</div>`
                 }
                 const html = `
-                <h3>Notes</h3>
                 <div class="devNotes"><ol>${notes.map(note => '<li>' + note + '</li>').join('')}</ol></div>
                 <div class="code">${styleStrCode}</div>
                 <div class="container" style="${styleStr}"> ${flexItemsHTML} </div>

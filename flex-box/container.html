@@ -32,11 +32,31 @@
             width: 70px;
             height: 70px;
         }
+
+        .item2 {
+            border: 2px solid green;
+            padding: 1rem;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+
         .code {
             padding: 1rem;
             margin-bottom: 1rem;
             background-color: #e4c5c5;
             font-weight: bold;
+        }
+
+        .codeSpan {
+            padding: 2px;
+            background-color: #d8d5d5;
+            font-weight: bold;
+        }
+
+        .devNotes {
+            margin: 8px 0px;
+            padding: 24px;
+            background: aliceblue;
         }
     </style>
 </head>
@@ -50,7 +70,7 @@
         <li>Width of each flex item is vary (depends on it's content)</li>
         <li>Style of the container is given before it starts</li>
     </ol>
-    <br /> 
+    <br />
     <div id="helloFlex">
 
     </div>
@@ -116,25 +136,90 @@
         <div class="item"><span>10</span></div>
         `;
 
-        const getFlexContainer = (styleObj) => {
-            let styleStr = '';
-            let styleStrCode = '';
-            for (const key in styleObj) {
-                styleStr = `${styleStr}${key}: ${styleObj[key]};`;
-                styleStrCode = styleStrCode + `<p>${key}: ${styleObj[key]}</p>`
-            }
-            const html = `
+            const getFlexContainer = (styleObj) => {
+                let styleStr = '';
+                let styleStrCode = '';
+                for (const key in styleObj) {
+                    styleStr = `${styleStr}${key}: ${styleObj[key]};`;
+                    styleStrCode = styleStrCode + `<p>${key}: ${styleObj[key]}</p>`
+                }
+                const html = `
                 <div class="code">${styleStrCode}</div>
                 <div class="container" style="${styleStr}"> ${flexItemsHTML} </div>
                 <br /><br /> <hr /> <br /> <br />
             `;
-            return html;
-        }
+                return html;
+            }
 
-        stylesArray.forEach((styleObj) => {
-            const html = getFlexContainer(styleObj);
-            helloFlex.innerHTML +=  html;
-        });
+            stylesArray.forEach((styleObj) => {
+                const html = getFlexContainer(styleObj);
+                helloFlex.innerHTML += html;
+            });
+
+            const infoArray = [
+                {
+                    notes: [
+                        `Assume child elements doesn't have heigt and width defined`,
+                        `elements will take full height of the parent if <span class="codeSpan">flex-wrap</span> doesn't exists on parent element`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        height: '300px'
+                    },
+                    totalChilds: 3,
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+
+                },
+                {
+                    notes: [
+                        `Assume child elements doesn't have heigt and width defined`,
+                        `<span class="codeSpan">flex-wrap: wrap</span>  &  <span class="codeSpan">align-content: start</span> exists on parent level`,
+                        `Here children will take height and width as per content.`,
+                        `Height of all elements in particular line will be same`,
+                        `If one element has more content in one line, rest element's height will be same as that element`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'align-content': 'start',
+                    },
+                    totalChilds: 15,
+                    childItemClass: 'item2',
+                    itemsHtml: {
+                        7: `<span>7................</span>`,
+                        8: `<span>8</span><br /><span>8.1</span></span><br /><span>`,
+                        15: `<span>15</span><br /><span>15.1</span><br /><span>15.2</span> <br />
+                        <span>15.3</span><br /><span>15.4</span></span><br /><span>15.5</span> <br />
+                        <span>15.6</span><br /><span>15.7</span></span><br /><span>15.8</span>
+                        `,
+                    }
+
+                }
+            ];
+
+            infoArray.forEach(({ notes, containerStyle, totalChilds, childItemClass, itemsHtml }) => {
+                let styleStr = '';
+                let styleStrCode = '';
+                for (const key in containerStyle) {
+                    styleStr = `${styleStr}${key}: ${containerStyle[key]};`;
+                    styleStrCode = styleStrCode + `<p>${key}: ${containerStyle[key]}</p>`
+                }
+
+                let flexItemsHTML = '';
+                for (let i = 1; i <= totalChilds; i++) {
+                    let html = itemsHtml[i] || `<span>${i}<span>`;
+                    flexItemsHTML = `${flexItemsHTML}<div class="${childItemClass}">${html}</div>`
+                }
+                const html = `
+                <h3>Notes</h3>
+                <div class="devNotes"><ol>${notes.map(note => '<li>' + note + '</li>').join('')}</ol></div>
+                <div class="code">${styleStrCode}</div>
+                <div class="container" style="${styleStr}"> ${flexItemsHTML} </div>
+                <br /><br /> <hr /> <br /> <br />
+            `;
+                helloFlex.innerHTML += html;
+            })
 
         })();
     </script>

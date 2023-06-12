@@ -26,15 +26,7 @@
             width: 100%;
             border: 2px solid red;
             padding: 1rem;
-        }
-
-        .item {
-            border: 2px solid green;
-            padding: 1rem;
-            margin-right: 1rem;
-            margin-bottom: 1rem;
-            width: 70px;
-            height: 70px;
+            gap: 1rem;
         }
 
         .hundred {
@@ -45,8 +37,6 @@
         .item2 {
             border: 2px solid green;
             padding: 1rem;
-            margin-right: 1rem;
-            margin-bottom: 1rem;
         }
 
         .code {
@@ -63,8 +53,8 @@
             border-radius: 10px;
         }
 
-        h1 .codeSpan {
-            font-size: 0.75em;
+        h3 .codeSpan {
+            font-size: 0.9em;
             position: relative;
             bottom: 2px;
             padding: 6px 12px;
@@ -323,7 +313,6 @@
                         `,
                     }
                 },
-
                 {
                     notes: [
                         `Use <span class="codeSpan">align-content: start</span> on parent`,
@@ -346,13 +335,124 @@
                         <span>15.6</span><br /><span>15.7</span></span><br /><span>15.8</span>
                         `,
                     }
+                },
+                {
+                    groupHeading: `Ep 6 : Aliginment with in main axis <span class="codeSpan">justify-content</span>`
+                },
+                {
+                    notes: [
+                        `Manage alignment horizontaly`,
+                        `<span class="codeSpan">justify-content: flex-start</span>`,
+                        `You will be able to see the effect of this property, if there are less items in one line`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'justify-content': 'flex-start'
+                    },
+                    totalChilds: 3,
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
+                {
+                    notes: [
+                        `Manage alignment horizontaly`,
+                        `<span class="codeSpan">justify-content: flex-end</span>`,
+                        `You will be able to see the effect of this property, if there are less items in one line`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'justify-content': 'flex-end'
+                    },
+                    totalChilds: 3,
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
 
-                }
+                {
+                    notes: [
+                        `Manage alignment horizontaly`,
+                        `<span class="codeSpan">justify-content: center</span>`,
+                        `You will be able to see the effect of this property, if there are less items in one line`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'justify-content': 'center'
+                    },
+                    totalChilds: 3,
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
+
+                {
+                    notes: [
+                        `Same as above, but with lot's of children`,
+                        `As we have multi lines flexbox container, we can't live without <span class="codeSpan">align-content</span>`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'justify-content': 'center',
+                        'align-content': 'start',
+                    },
+                    totalChilds: 12,
+                    childItemClass: 'item2',
+                    itemsHtml: {
+                        7: `<span>7................</span>`,
+                        8: `<span>8</span><br /><span>8.1</span>`,
+                    }
+                },
+                {
+                    notes: [
+                        `<span class="codeSpan">justify-content: space-between</span>`,
+                        `In line, 1st item will be at extreme left, last will be at extrem right`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'justify-content': 'space-between',
+                        'align-content': 'start',
+                    },
+                    totalChilds: 11, //..
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
+
+                {
+                    notes: [
+                        `<span class="codeSpan">justify-content: space-around</span>`,
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'justify-content': 'space-around',
+                        'align-content': 'start',
+                    },
+                    totalChilds: 11, //..
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
+                {
+                    notes: [
+                        `<span class="codeSpan">justify-content: space-evenly</span>`,
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'justify-content': 'space-evenly',
+                        'align-content': 'start',
+                    },
+                    totalChilds: 11, //..
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
             ];
 
             infoArray.forEach(({ groupHeading, notes, containerStyle, totalChilds, childItemClass, itemsHtml }) => {
                 if (groupHeading) {
-                    helloFlex.innerHTML += `<h1 class="groupHeading">${groupHeading}</h1> <br /><br />`;
+                    helloFlex.innerHTML += `<h3 class="groupHeading">${groupHeading}</h3> <br /><br />`;
                     return;
                 }
                 let styleStr = '';

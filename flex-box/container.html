@@ -2,9 +2,6 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -71,9 +68,9 @@
         }
 
         .groupHeading {
-					background: #64e881;
-					padding: 2rem;
-					border-radius: 4rem;
+            background: #64e881;
+            padding: 2rem;
+            border-radius: 4rem;
         }
     </style>
 </head>
@@ -237,6 +234,22 @@
                     },
                     totalChilds: 8,
                     childItemClass: 'item2 hundred',
+                    itemsHtml: {}
+                },
+                {
+                    notes: [
+                        `Have <span class="codeSpan">align-content: start</span>`,
+                        `This will group the children and put them within the container based on value of <span class="codeSpan">align-content: start</span>`,
+                        `Here children doesn't have height and width defined.`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        height: '480px',
+                        'align-content': 'start'
+                    },
+                    totalChilds: 8,
+                    childItemClass: 'item2',
                     itemsHtml: {}
                 },
 
@@ -408,7 +421,7 @@
                     notes: [
                         `<span class="codeSpan">justify-content: space-between</span>`,
                         `In line, 1st item will be at extreme left, last will be at extrem right`,
-												`If you see all the items in one line then try to narrow down your viewport width. This example was meant to show items in multiple lines.`
+                        `If you see all the items in one line then try to narrow down your viewport width. This example was meant to show items in multiple lines.`
                     ],
                     containerStyle: {
                         display: 'flex',
@@ -450,39 +463,39 @@
                     itemsHtml: {}
                 },
 
-								{
-									groupHeading: `Ep 7 : Aliginment with in cross axis <span class="codeSpan">align-items</span>`
-								},
+                {
+                    groupHeading: `Ep 7 : Aliginment with in cross axis <span class="codeSpan">align-items</span>`
+                },
 
-								{
+                {
                     notes: [
                         `<span class="codeSpan">align-items: stretch</span> Default`,
                     ],
                     containerStyle: {
                         display: 'flex',
                         'align-items': 'stretch',
-												height: '200px',
+                        height: '200px',
                     },
                     totalChilds: 4, //..
                     childItemClass: 'item2',
                     itemsHtml: {}
                 },
 
-								{
+                {
                     notes: [
                         `<span class="codeSpan">align-items: flex-start</span>`,
                     ],
                     containerStyle: {
                         display: 'flex',
                         'align-items': 'flex-start',
-												height: '300px',
+                        height: '300px',
                     },
                     totalChilds: 4, //..
                     childItemClass: 'item2',
                     itemsHtml: {}
                 },
 
-								{
+                {
                     notes: [
                         `<span class="codeSpan">align-items: flex-end</span>`,
                     ],
@@ -490,13 +503,13 @@
                         display: 'flex',
                         'flex-wrap': 'wrap',
                         'align-items': 'flex-end',
-												height: '300px',
+                        height: '300px',
                     },
                     totalChilds: 4, //..
                     childItemClass: 'item2',
                     itemsHtml: {}
                 },
-								{
+                {
                     notes: [
                         `<span class="codeSpan">align-items: center</span>`,
                     ],
@@ -504,58 +517,95 @@
                         display: 'flex',
                         'flex-wrap': 'wrap',
                         'align-items': 'center',
-												height: '300px',
+                        height: '300px',
                     },
                     totalChilds: 4, //..
                     childItemClass: 'item2',
                     itemsHtml: {}
                 },
-								{
+                {
                     notes: [
                         `<span class="codeSpan">align-items: center</span>`,
-												`Children are with different heights`
+                        `Children are with different heights`
                     ],
                     containerStyle: {
                         display: 'flex',
                         'flex-wrap': 'wrap',
                         'align-items': 'center',
-												height: '300px',
+                        height: '300px',
                     },
                     totalChilds: 4, //..
                     childItemClass: 'item2',
                     itemsHtml: {
-											3: `<span>3</span><br />
+                        3: `<span>3</span><br />
 													<span>3.1</span><br />
 													<span>3.3</span><br />
 													<span>3.4</span>`,
-										}
+                    }
                 },
-								{
+                {
                     notes: [
                         `<span class="codeSpan">align-items: baseline</span>`,
-												`Children are with different heights`
+                        `Children are with different heights`
                     ],
                     containerStyle: {
                         display: 'flex',
                         'flex-wrap': 'wrap',
                         'align-items': 'baseline',
-												height: '300px',
+                        height: '300px',
                     },
                     totalChilds: 4, //..
                     childItemClass: 'item2',
                     itemsHtml: {
-											3: `<span>3</span><br />
+                        3: `<span>3</span><br />
 													<span>3.1</span><br />
 													<span>3.3</span><br />
 													<span>3.4</span>`,
-										}
+                    }
                 },
 
-								{
-									groupHeading: 'Center div(s) horizontally and vertically'
-								}
 
 
+                {
+                    groupHeading: 'Center div(s) horizontally and vertically'
+                },
+                {
+                    notes: [
+                        `Lot's of Children are with different heights and width`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'align-items': 'center',
+                        'align-content': 'center',
+                        'justify-content': 'center',
+                        height: '600px',
+                    },
+                    totalChilds: 22, //..
+                    childItemClass: 'item2',
+                    itemsHtml: {
+                        3: `<span>3</span><br />
+                        <span>3.1</span><br />
+                        <span>3.3</span><br />
+                        <span>3.4</span>`,
+                        10: `<span>10.............10</span>`,
+                    }
+                },
+                {
+                    notes: [
+                        `Children that fits in one line`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'align-items': 'center',
+                        'justify-content': 'center',
+                        height: '250px',
+                    },
+                    totalChilds: 3, //..
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
             ];
 
             infoArray.forEach(({ groupHeading, notes, containerStyle, totalChilds, childItemClass, itemsHtml }) => {
@@ -583,9 +633,6 @@
             `;
                 helloFlex.innerHTML += html;
             })
-
-
-
         })();
     </script>
 </body>

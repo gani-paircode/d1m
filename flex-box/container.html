@@ -71,8 +71,9 @@
         }
 
         .groupHeading {
-            background: lightcoral;
-            padding: 1rem;
+					background: #64e881;
+					padding: 2rem;
+					border-radius: 4rem;
         }
     </style>
 </head>
@@ -277,7 +278,7 @@
 
                 {
                     notes: [
-                        `There are lot's of children without height and width.`,
+                        `Limited children but without height and width.`,
                         `Ideally height should be based on their content, but here they are taking height of the parent`,
                         `No matter whether they need it or not`
                     ],
@@ -292,8 +293,8 @@
                 },
                 {
                     notes: [
-                        `Same as above`,
-                        `Here children are dividing height among them`,
+                        `Lot's of children`,
+                        `Here children are dividing height among them self`,
                         `See un-necessary height in each children element`,
                         `Solution will be in next example`
                     ],
@@ -316,8 +317,7 @@
                 {
                     notes: [
                         `Use <span class="codeSpan">align-content: start</span> on parent`,
-                        `Height of all elements in particular line will be same`,
-                        `Height of all the elements in particular line will be the same as height of the tallest element in that line`
+                        `Height of all the elements in particular line will be the same as height of the tallest element in that line`,
                     ],
                     containerStyle: {
                         display: 'flex',
@@ -407,7 +407,8 @@
                 {
                     notes: [
                         `<span class="codeSpan">justify-content: space-between</span>`,
-                        `In line, 1st item will be at extreme left, last will be at extrem right`
+                        `In line, 1st item will be at extreme left, last will be at extrem right`,
+												`If you see all the items in one line then try to narrow down your viewport width. This example was meant to show items in multiple lines.`
                     ],
                     containerStyle: {
                         display: 'flex',
@@ -447,6 +448,74 @@
                     totalChilds: 11, //..
                     childItemClass: 'item2',
                     itemsHtml: {}
+                },
+
+								{
+									groupHeading: `Ep 7 : Aliginment with in cross axis <span class="codeSpan">align-items</span>`
+								},
+
+								{
+                    notes: [
+                        `<span class="codeSpan">align-items: flex-start</span>`,
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'align-items': 'flex-start',
+												height: '300px',
+                    },
+                    totalChilds: 4, //..
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
+
+								{
+                    notes: [
+                        `<span class="codeSpan">align-items: flex-end</span>`,
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'align-items': 'flex-end',
+												height: '300px',
+                    },
+                    totalChilds: 4, //..
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
+								{
+                    notes: [
+                        `<span class="codeSpan">align-items: center</span>`,
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'align-items': 'center',
+												height: '300px',
+                    },
+                    totalChilds: 4, //..
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
+								{
+                    notes: [
+                        `<span class="codeSpan">align-items: center</span>`,
+												`Children are with different heights`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'align-items': 'center',
+												height: '300px',
+                    },
+                    totalChilds: 4, //..
+                    childItemClass: 'item2',
+                    itemsHtml: {
+											3: `<span>3</span><br />
+													<span>3.1</span><br />
+													<span>3.3</span><br />
+													<span>3.4</span>`,
+										}
                 },
             ];
 

@@ -456,11 +456,24 @@
 
 								{
                     notes: [
+                        `<span class="codeSpan">align-items: stretch</span> Default`,
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'align-items': 'stretch',
+												height: '200px',
+                    },
+                    totalChilds: 4, //..
+                    childItemClass: 'item2',
+                    itemsHtml: {}
+                },
+
+								{
+                    notes: [
                         `<span class="codeSpan">align-items: flex-start</span>`,
                     ],
                     containerStyle: {
                         display: 'flex',
-                        'flex-wrap': 'wrap',
                         'align-items': 'flex-start',
 												height: '300px',
                     },
@@ -517,6 +530,32 @@
 													<span>3.4</span>`,
 										}
                 },
+								{
+                    notes: [
+                        `<span class="codeSpan">align-items: baseline</span>`,
+												`Children are with different heights`
+                    ],
+                    containerStyle: {
+                        display: 'flex',
+                        'flex-wrap': 'wrap',
+                        'align-items': 'baseline',
+												height: '300px',
+                    },
+                    totalChilds: 4, //..
+                    childItemClass: 'item2',
+                    itemsHtml: {
+											3: `<span>3</span><br />
+													<span>3.1</span><br />
+													<span>3.3</span><br />
+													<span>3.4</span>`,
+										}
+                },
+
+								{
+									groupHeading: 'Center div(s) horizontally and vertically'
+								}
+
+
             ];
 
             infoArray.forEach(({ groupHeading, notes, containerStyle, totalChilds, childItemClass, itemsHtml }) => {
@@ -544,6 +583,8 @@
             `;
                 helloFlex.innerHTML += html;
             })
+
+
 
         })();
     </script>
